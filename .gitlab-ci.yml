@@ -1,0 +1,14 @@
+stages:
+    - publish
+
+publish:
+    stage: publish
+    image: docker
+    script:
+        - docker login ${CI_REGISTRY} -u gitlab-ci-token -p ${CI_BUILD_TOKEN}
+        - docker build -t ${CI_REGISTRY_IMAGE}:latest  .
+        - docker push ${CI_REGISTRY_IMAGE}:latest
+    only:
+        - master
+    tags:
+        - ns01
