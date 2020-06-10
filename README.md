@@ -6,7 +6,7 @@ This is a Docker image for [Mapbox's Tippecanoe](https://github.com/mapbox/tippe
 
 Run with `docker run`, mounting a local directory or use Docker volumes as needed with `-v`. See below for specific examples.
 
-## Intertative mode with `bash`
+## Interactive mode with `bash`
 
 Bash comes preinstalled and will run as the default entrypoint.
 
