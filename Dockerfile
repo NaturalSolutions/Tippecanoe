@@ -1,7 +1,7 @@
 FROM node:alpine
 LABEL maintainer="Javier Blanco <javier_blanco@natural-solutions.eu>"
 
-RUN apk add --no-cache sudo git g++ make libgcc libstdc++ sqlite-libs sqlite-dev zlib-dev bash \
+RUN apk add --no-cache sudo git g++ make libgcc libstdc++ sqlite-libs sqlite-dev zlib-dev bash curl \
   && addgroup -S tippecanoe && adduser -S -G tippecanoe tippecanoe \
   && cd /root \
   && git clone https://github.com/mapbox/tippecanoe.git tippecanoe \
