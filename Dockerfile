@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM alpine
 LABEL maintainer="Javier Blanco <javier_blanco@natural-solutions.eu>"
 
 RUN apk add --no-cache sudo git g++ make libgcc libstdc++ sqlite-libs sqlite-dev zlib-dev bash curl \
