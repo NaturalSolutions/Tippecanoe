@@ -1,0 +1,25 @@
+name: Publish Docker Image
+on:
+  push:
+    tags: [ 'v*' ]
+
+jobs:
+  publish-docker-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set version number
+        run: echo "VERSION=${GITHUB_REF:10}" >> $GITHUB_ENV
+
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          build-args: VERSION=${{ env.VERSION }}
+          tags: |
+            ghcr.io/jarvusinnovations/tippecanoe-alpine:latest
+            ghcr.io/jarvusinnovations/tippecanoe-alpine:${{ env.VERSION }}
+          cache-from: type=registry,ref=ghcr.io/jarvusinnovations/tippecanoe-alpine:latest
+          cache-to: type=inline
